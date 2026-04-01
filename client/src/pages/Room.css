@@ -1,0 +1,7 @@
+.host-video-interaction {
+  pointer-events: auto !important;
+}
+
+.guest-video-interaction {
+  pointer-events: none !important;
+}

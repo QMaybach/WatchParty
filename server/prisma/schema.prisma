@@ -1,0 +1,31 @@
+// Путь: watch-party/server/prisma/schema.prisma
+
+// Генератор клиента - говорит Prisma, что мы пишем на JS/TS
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Подключение к БД - берет URL из файла .env
+datasource db {
+  provider = "postgresql"
+}
+
+// Наша первая таблица (Модель)
+// Добавь это к существующим моделям
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  username  String
+  password  String
+  rooms     Room[]   // Связь "один ко многим": один юзер может создать много комнат
+  createdAt DateTime @default(now())
+}
+
+model Room {
+  id        String   @id @default(uuid())
+  title     String
+  videoUrl  String   @default("/test.mp4") // Теперь это значение по умолчанию
+  hostId    String
+  createdAt DateTime @default(now())
+  host      User     @relation(fields: [hostId], references: [id])
+}

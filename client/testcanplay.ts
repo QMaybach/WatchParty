@@ -1,0 +1,1 @@
+import ReactPlayer from 'react-player'; console.log(ReactPlayer.canPlay('https://vk.com/video-123_456')); console.log(ReactPlayer.canPlay('https://www.youtube.com/watch?v=123')); console.log(ReactPlayer.canPlay('https://www.twitch.tv/ninja'));
