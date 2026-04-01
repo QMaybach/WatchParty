@@ -59,8 +59,8 @@ app.get('/.well-known/appspecific/com.chrome.devtools.json', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/rooms', roomRoutes);
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT) : 5000;
 
-httpServer.listen(PORT, () => {
-  console.log('🚀 Сервер запущен на http://localhost:' + PORT);
+httpServer.listen(PORT, '0.0.0.0', () => {
+  console.log('🚀 Сервер запущен на http://0.0.0.0:' + PORT);
 });
