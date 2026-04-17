@@ -42,7 +42,7 @@ router.get('/', async (_req, res) => {
     
     // Добавляем реальный счетчик онлайна из сокетов
     const io = getIo();
-    const roomsWithCount = rooms.map(room => {
+    const roomsWithCount = rooms.map((room: any) => {
       const count = io ? (io.sockets.adapter.rooms.get(room.id)?.size || 0) : 0;
       return { ...room, usersCount: count };
     });
